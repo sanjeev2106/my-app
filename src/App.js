@@ -9,7 +9,14 @@ class App extends Component{
       { name:"Max", age:28 },
       { name:"John", age:27 },
       { name:"Manu", age:24 }
-    ]
+    ],
+    showPerson: false
+  }
+
+  togglePersonHandler = () =>{
+      const doesShow = this.state.showPerson;
+      console.log(!doesShow);
+      this.setState({ showPerson: !doesShow }); 
   }
 
   personHandler = (newName) => {
@@ -44,25 +51,34 @@ class App extends Component{
 
     return (
       <div className="App">
-        {/* <button onClick={this.personHandler.bind(this, 'Maximilion')}>Click to Change</button> */}
-        {/* or */}
-        <button style={myStyle} onClick={() => this.personHandler('Maximilion!!')}>Click to Change</button> 
-        {/* but 2nd one is not recommended, try to use 1st one */}
-        <Person 
-          name={this.state.persons[0].name} 
-          age={this.state.persons[0].age}>
-        </Person>
-        <Person 
-          name={this.state.persons[1].name} 
-          age={this.state.persons[1].age}
-          // pass method as reference
-          click={this.personHandler.bind(this, 'Max!')}
-          changed = {this.nameChangeHandler}>My Hobbies: Racing
-        </Person>
-        <Person 
-          name={this.state.persons[2].name} 
-          age={this.state.persons[2].age}>
-        </Person>
+        
+        <button style={myStyle} onClick={this.togglePersonHandler}>Click to Change</button> 
+       
+       {        
+        this.state.showPerson ? 
+          <div>
+            <Person 
+                name={this.state.persons[0].name} 
+                age={this.state.persons[0].age}>
+              </Person>
+              <Person 
+                name={this.state.persons[1].name} 
+                age={this.state.persons[1].age}
+                // pass method as reference
+                click={this.personHandler.bind(this, 'Max!')}
+                changed = {this.nameChangeHandler}>My Hobbies: Racing
+              </Person>
+              <Person 
+                name={this.state.persons[2].name} 
+                age={this.state.persons[2].age}>
+              </Person>
+          </div>
+        : null
+       }
+        
+
+        
+        
       </div>
     )
   }
