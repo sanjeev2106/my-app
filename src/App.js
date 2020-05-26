@@ -33,11 +33,20 @@ class App extends Component{
   }
 
   render(){
+// inline styling
+    const myStyle = {
+      backgroundColor: 'gray',
+      font: 'inherit',
+      border: '1px solid blur',
+      padding: '10px',
+      cursor: 'pointer'
+    };
+
     return (
       <div className="App">
         {/* <button onClick={this.personHandler.bind(this, 'Maximilion')}>Click to Change</button> */}
         {/* or */}
-        <button onClick={() => this.personHandler('Maximilion!!')}>Click to Change</button> 
+        <button style={myStyle} onClick={() => this.personHandler('Maximilion!!')}>Click to Change</button> 
         {/* but 2nd one is not recommended, try to use 1st one */}
         <Person 
           name={this.state.persons[0].name} 
