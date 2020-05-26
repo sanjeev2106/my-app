@@ -11,10 +11,10 @@ class App extends Component{
     ]
   }
 
-  personHandler = () => {
+  personHandler = (newName) => {
     this.setState({
       persons: [
-        { name:"Maximo", age:28 },
+        { name:newName, age:28 },
         { name:"John", age:27 },
         { name:"Manu", age:30 }
       ]
@@ -24,7 +24,10 @@ class App extends Component{
   render(){
     return (
       <div className="App">
-        <button onClick={this.personHandler}>Click to Change</button>
+        {/* <button onClick={this.personHandler.bind(this, 'Maximilion')}>Click to Change</button> */}
+        {/* or */}
+        <button onClick={() => this.personHandler('Maximilion!!')}>Click to Change</button> 
+        {/* but 2nd one is not recommended, try to use 1st one */}
         <Person 
           name={this.state.persons[0].name} 
           age={this.state.persons[0].age}>
@@ -33,7 +36,7 @@ class App extends Component{
           name={this.state.persons[1].name} 
           age={this.state.persons[1].age}
           // pass method as reference
-          click={this.personHandler}>
+          click={this.personHandler.bind(this, 'Max!')}>
         </Person>
         <Person 
           name={this.state.persons[2].name} 
