@@ -42,39 +42,49 @@ class App extends Component{
   render(){
 // inline styling
     const myStyle = {
-      backgroundColor: 'gray',
+      backgroundColor: '#eee',
       font: 'inherit',
       border: '1px solid blur',
+      borderRadius: '25px',
       padding: '10px',
       cursor: 'pointer'
     };
+
+    let persons = null;
+
+    if(this.state.showPerson){
+      persons = (
+
+        <div>
+            <Person 
+              name={this.state.persons[0].name} 
+              age={this.state.persons[0].age}>
+            </Person>
+            <Person 
+              name={this.state.persons[1].name} 
+              age={this.state.persons[1].age}
+              // pass method as reference
+              click={this.personHandler.bind(this, 'Max!')}
+              changed = {this.nameChangeHandler}>My Hobbies: Racing
+            </Person>
+            <Person 
+              name={this.state.persons[2].name} 
+              age={this.state.persons[2].age}>
+            </Person>
+        </div>
+
+      )
+    }
 
     return (
       <div className="App">
         
         <button style={myStyle} onClick={this.togglePersonHandler}>Click to Change</button> 
        
-       {        
-        this.state.showPerson ? 
-          <div>
-            <Person 
-                name={this.state.persons[0].name} 
-                age={this.state.persons[0].age}>
-              </Person>
-              <Person 
-                name={this.state.persons[1].name} 
-                age={this.state.persons[1].age}
-                // pass method as reference
-                click={this.personHandler.bind(this, 'Max!')}
-                changed = {this.nameChangeHandler}>My Hobbies: Racing
-              </Person>
-              <Person 
-                name={this.state.persons[2].name} 
-                age={this.state.persons[2].age}>
-              </Person>
-          </div>
-        : null
-       }
+        {persons}
+          
+       
+       
         
 
         
