@@ -6,9 +6,9 @@ import './Person/Person.css'
 class App extends Component{
   state = {
     persons: [
-      { name:"Max", age:28 },
-      { name:"John", age:27 },
-      { name:"Manu", age:24 }
+      { id:"p1", name:"Max", age:28 },
+      { id:"p2", name:"John", age:27 },
+      { id:"p3", name:"Manu", age:24 }
     ],
     showPerson: false
   }
@@ -30,29 +30,39 @@ class App extends Component{
   // }
 
   deletePersonHandler = (index) => {
-      //const persons = this.state.persons;
-      const persons = [...this.state.persons];
+      //const persons = this.state.persons;   // Here not creating a new persons array, just refering the same
+      const persons = [...this.state.persons]; // Creating a new array of persons. This is the best practice.
       persons.splice(index, 1);
       this.setState({persons:persons});
   } 
 
-  nameChangeHandler = (event) => {
-    this.setState({
-      persons: [
-        { name:'Max', age:28 },
-        { name: event.target.value, age:27 },
-        { name:"Manu", age:30 }
-      ]
+  nameChangeHandler = (event, id) => {
+    
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
     })
+
+    const person = {
+      ...this.state.persons[personIndex] // creating new person object
+    }
+
+    // or we can do above as:
+    //const person = Object.assign(this.state.persons[personIndex])
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+    
+    this.setState({ persons: persons })
   }
 
   render(){
 // inline styling
     const myStyle = {
-      backgroundColor: '#eee',
+      backgroundColor: 'white',
       font: 'inherit',
-      border: '1px solid blur',
-      borderRadius: '25px',
+      border: '1px solid blur',      
       padding: '10px',
       cursor: 'pointer'
     };
@@ -64,9 +74,11 @@ class App extends Component{
         <div>
           {this.state.persons.map((person, index) => { 
               return <Person 
-              click = {() => this.deletePersonHandler(index)}
+              //click = {() => this.deletePersonHandler(index)}
               name={person.name}
-              age={person.age}/>
+              age={person.age}
+              key={person.id}// each element should have unique id, after adding this Warning: Each child in a list should have a unique "key" prop will got removed.
+              changed={(event)=> this.nameChangeHandler(event, person.id)} />
             })}           
         </div>
       )
