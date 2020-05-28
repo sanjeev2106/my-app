@@ -53,10 +53,17 @@ class App extends Component{
     let persons = null;
 
     if(this.state.showPerson){
-      persons = (
 
+      
+      persons = (
         <div>
-            <Person 
+          {this.state.persons.map(person => { 
+              return <Person 
+              name={person.name}
+              age={person.age}
+              />
+            })}
+            {/* <Person 
               name={this.state.persons[0].name} 
               age={this.state.persons[0].age}>
             </Person>
@@ -70,25 +77,14 @@ class App extends Component{
             <Person 
               name={this.state.persons[2].name} 
               age={this.state.persons[2].age}>
-            </Person>
+            </Person> */}
         </div>
-
       )
     }
-
     return (
-      <div className="App">
-        
-        <button style={myStyle} onClick={this.togglePersonHandler}>Click to Change</button> 
-       
-        {persons}
-          
-       
-       
-        
-
-        
-        
+      <div className="App">        
+        <button style={myStyle} onClick={this.togglePersonHandler}>Click to Change</button>        
+        {persons}  
       </div>
     )
   }
