@@ -72,6 +72,7 @@ class App extends Component{
     if(this.state.showPerson){      
       persons = (
         <div>
+          {/* The map function used to map a js object of any type into an array of JSX element.  */}
           {this.state.persons.map((person, index) => { 
               return <Person 
               //click = {() => this.deletePersonHandler(index)}
