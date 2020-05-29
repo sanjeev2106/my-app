@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import './Person/Person.css'
+import { classes } from 'istanbul-lib-coverage';
 
 class App extends Component{
   state = {
@@ -65,7 +66,7 @@ class App extends Component{
           {/* The map function used to map a js object of any type into an array of JSX element.  */}
           {this.state.persons.map((person, index) => { 
               return <Person 
-              //click = {() => this.deletePersonHandler(index)}
+              click = {() => this.deletePersonHandler(index)}
               name={person.name}
               age={person.age}
               key={person.id}// each element should have unique id, after adding this Warning: Each child in a list should have a unique "key" prop will got removed.
@@ -74,11 +75,24 @@ class App extends Component{
         </div>
       )
       myStyle.backgroundColor= 'red';
+
+      const classes = [];
+
+      if(this.state.persons.length <=2){
+        classes.push('red'); // classes = [red]
+      }
+      if(this.state.persons.length <=1){
+        classes.push('bold'); //classes = [red, bold] and classes.join('' ) will be 'red bold'
+      }
+      
+      var myClass = classes.join(' ');      
     }
     return (
-      <div className="App">        
-        <button style={myStyle} onClick={this.togglePersonHandler}>Click to Change</button>        
-        {persons}  
+      <div className="App">  
+      <h1>Hi I'm a React App</h1>
+      <p className={myClass}>Wow Its working!</p>      
+      <button style={myStyle} onClick={this.togglePersonHandler}>Click to Change</button>        
+      {persons}  
       </div>
     )
   }
