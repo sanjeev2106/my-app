@@ -19,16 +19,6 @@ class App extends Component{
       this.setState({ showPerson: !doesShow }); 
   }
 
-  // personHandler = (newName) => {
-  //   this.setState({
-  //     persons: [
-  //       { name:newName, age:28 },
-  //       { name:"John", age:27 },
-  //       { name:"Manu", age:30 }
-  //     ]
-  //   })
-  // }
-
   deletePersonHandler = (index) => {
       //const persons = this.state.persons;   // Here not creating a new persons array, just refering the same
       const persons = [...this.state.persons]; // Creating a new array of persons. This is the best practice.
@@ -60,7 +50,7 @@ class App extends Component{
   render(){
 // inline styling
     const myStyle = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
       font: 'inherit',
       border: '1px solid blur',      
       padding: '10px',
@@ -83,6 +73,7 @@ class App extends Component{
             })}           
         </div>
       )
+      myStyle.backgroundColor= 'red';
     }
     return (
       <div className="App">        
