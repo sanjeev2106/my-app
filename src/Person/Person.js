@@ -1,6 +1,12 @@
 import React from 'react';
 import Radium from 'radium';
 const person = (props) => {
+    const style = {
+    '@media (min-width: 500px)': {
+        width:'450px'
+    }
+};
+
     return (
         <div className="Person" onClick={props.click}>
             <p>I'm {props.name} and my age is {props.age}!</p>
