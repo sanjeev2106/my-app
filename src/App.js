@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
+import Radium from 'radium';
 import Person from './Person/Person';
 import './Person/Person.css'
 import { classes } from 'istanbul-lib-coverage';
+import { black } from 'color-name';
 
 class App extends Component{
   state = {
@@ -55,7 +57,11 @@ class App extends Component{
       font: 'inherit',
       border: '1px solid blur',      
       padding: '10px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: '#d9ff66',
+        color: black
+      }
     };
 
     let persons = null;
@@ -75,6 +81,11 @@ class App extends Component{
         </div>
       )
       myStyle.backgroundColor= 'red';
+
+      myStyle[':hover'] = {
+        backgroundColor: '#ff8080',
+        color: black
+      }
 
       const classes = [];
 
@@ -98,4 +109,4 @@ class App extends Component{
   }
 }
 
-export default App;
+export default Radium(App);
