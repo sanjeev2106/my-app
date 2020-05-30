@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
+import styled from 'styled-components'
 import Person from './Person/Person';
+
+const Button = styled.button`
+  background-color: green;
+  font: inherit;
+  border: 1px solid blur;      
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #d9ff66;
+    color: black;
+  }
+`;
 
 class App extends Component{
   state = {
@@ -48,17 +62,17 @@ class App extends Component{
 
   render(){
 // inline styling
-    const myStyle = {
-      backgroundColor: 'green',
-      font: 'inherit',
-      border: '1px solid blur',      
-      padding: '10px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: '#d9ff66',
-        color: 'black'
-      }
-    };
+    // const myStyle = {
+    //   backgroundColor: 'green',
+    //   font: 'inherit',
+    //   border: '1px solid blur',      
+    //   padding: '10px',
+    //   cursor: 'pointer',
+    //   ':hover': {
+    //     backgroundColor: '#d9ff66',
+    //     color: 'black'
+    //   }
+    // };
 
     let persons = null;
 
@@ -76,12 +90,12 @@ class App extends Component{
             })}           
         </div>
       )
-      myStyle.backgroundColor= 'red';
+      // myStyle.backgroundColor= 'red';
 
-      myStyle[':hover'] = {
-        backgroundColor: '#ff8080',
-        color: 'black'
-      }
+      // myStyle[':hover'] = {
+      //   backgroundColor: '#ff8080',
+      //   color: 'black'
+      // }
 
       const classes = [];
 
@@ -98,7 +112,7 @@ class App extends Component{
         <div className="App">
           <h1>Hi I'm a React App</h1>
           <p className={myClass}>Wow Its working!</p>      
-          <button style={myStyle} onClick={this.togglePersonHandler}>Click to Change</button>        
+          <Button onClick={this.togglePersonHandler}>Click to Change</Button>        
           {persons}  
         </div>     
     )
