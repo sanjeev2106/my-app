@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
-import './Person/Person.css'
-import { classes } from 'istanbul-lib-coverage';
-import { black } from 'color-name';
 
 class App extends Component{
   state = {
@@ -60,7 +56,7 @@ class App extends Component{
       cursor: 'pointer',
       ':hover': {
         backgroundColor: '#d9ff66',
-        color: black
+        color: 'black'
       }
     };
 
@@ -84,7 +80,7 @@ class App extends Component{
 
       myStyle[':hover'] = {
         backgroundColor: '#ff8080',
-        color: black
+        color: 'black'
       }
 
       const classes = [];
@@ -98,17 +94,15 @@ class App extends Component{
       
       var myClass = classes.join(' ');      
     }
-    return (
-      <StyleRoot>
-        <div className="App">  
-        <h1>Hi I'm a React App</h1>
-        <p className={myClass}>Wow Its working!</p>      
-        <button style={myStyle} onClick={this.togglePersonHandler}>Click to Change</button>        
-        {persons}  
-        </div>
-      </StyleRoot>
+    return (    
+        <div className="App">
+          <h1>Hi I'm a React App</h1>
+          <p className={myClass}>Wow Its working!</p>      
+          <button style={myStyle} onClick={this.togglePersonHandler}>Click to Change</button>        
+          {persons}  
+        </div>     
     )
   }
 }
 
-export default Radium(App);
+export default App;
