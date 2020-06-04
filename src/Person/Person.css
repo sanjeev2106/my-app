@@ -1,12 +1,15 @@
-/* .Person {
+.Person {
     width: 60%;
     margin: auto;
     border: 1px solid #eef;
     padding: 16px;
     text-align: center;
     margin-top: 20px;
-} */
+    box-shadow: 0 2px 3px #ccc;
+} 
 
-/* '@media (min-width: 500px)': {
-    width:'450px'
-} */
+@media (min-width: 500px) {
+    .Person{
+        width:'450px'
+    }
+}
