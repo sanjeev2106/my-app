@@ -3,19 +3,6 @@ import './App.css';
 import styled from 'styled-components'
 import Person from './Person/Person';
 
-const Button = styled.button`
-  background-color: ${props => props.alt ? 'red' : 'green'};
-  font: inherit;
-  border: 1px solid blur;      
-  padding: 10px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${props => props.alt ? '#ff8080' : '#d9ff66'};
-    color: black;
-  }
-`;
-
 class App extends Component{
   state = {
     persons: [
@@ -112,7 +99,7 @@ class App extends Component{
         <div className="App">
           <h1>Hi I'm a React App</h1>
           <p className={myClass}>Wow Its working!</p>      
-          <Button alt={this.state.showPerson} onClick={this.togglePersonHandler}>Click to Change</Button>        
+          <button className='button' onClick={this.togglePersonHandler}>Click to Change</button>        
           {persons}  
         </div>     
     )
