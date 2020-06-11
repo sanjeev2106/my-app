@@ -1,19 +1,6 @@
 import React from 'react';
-import styled from 'styled-components'
-import classes from './Person.css'
+import classes from './Person.css';
 
-// const StyledDiv = styled.div`  
-//   width: 60%;
-//   margin: 20px auto;
-//   border: 1px solid #eef;
-//   padding: 16px;
-//   text-align: center;
-//   box-shadow: 0 2px 3px #ccc; 
-
-//   @media (min-width: 500px) {
-//     width:'450px';
-// }
-// `;
 
 const person = (props) => {
     return (
