@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
 
 class App extends Component{
   state = {
@@ -13,12 +13,12 @@ class App extends Component{
   }
 
   togglePersonHandler = () =>{
-      const doesShow = this.state.showPerson;
-      console.log(!doesShow);
+      const doesShow = this.state.showPerson;     
       this.setState({ showPerson: !doesShow }); 
   }
 
   deletePersonHandler = (index) => {
+    console.log('clicked'); 
       //const persons = this.state.persons;   // Here not creating a new persons array, just refering the same
       const persons = [...this.state.persons]; // Creating a new array of persons. This is the best practice.
       persons.splice(index, 1);
@@ -54,22 +54,27 @@ class App extends Component{
 
     if(this.state.showPerson){      
       persons = (
-        <div>
-          {/* The map function used to map a js object of any type into an array of JSX element.  */}
-          {this.state.persons.map((person, index) => { 
-              return <Person 
-              click = {() => this.deletePersonHandler(index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}// each element should have unique id, after adding this Warning: Each child in a list should have a unique "key" prop will got removed.
-              changed={(event)=> this.nameChangeHandler(event, person.id)} />
-            })}           
-        </div>
+        <Persons 
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangeHandler} />
+        // <div>
+        //   {/* The map function used to map a js object of any type into an array of JSX element.  */}
+        //   {this.state.persons.map((person, index) => { 
+        //       return <Person 
+        //       click = {() => this.deletePersonHandler(index)}
+        //       name={person.name}
+        //       age={person.age}
+        //       key={person.id}// each element should have unique id, after adding this Warning: Each child in a list should have a unique "key" prop will got removed.
+        //       changed={(event)=> this.nameChangeHandler(event, person.id)} />
+        //     })}           
+        // </div>
       )     
 
-      btnClass= classes.Red;
+      btnClass= classes.Red;        
+    }
 
-      const assignedClasses = [];
+    const assignedClasses = [];
 
       if(this.state.persons.length <=2){
         assignedClasses.push(classes.red); // classes = [red]
@@ -78,13 +83,13 @@ class App extends Component{
         assignedClasses.push(classes.bold); //classes = [red, bold] and classes.join('' ) will be 'red bold'
       }
       
-      var myClass = assignedClasses.join(' ');      
-    }
+      var myClass = assignedClasses.join(' ');    
+
     return (    
         <div className={classes.App}>
           <h1>Hi I'm a React App</h1>
           <p className={myClass}>Wow Its working!</p>      
-          <button className={btnClass} onClick={this.togglePersonHandler}>Click to Change</button>        
+          <button className={btnClass} onClick={this.togglePersonHandler}>Click to Toggle</button>        
           {persons}  
         </div>     
     )
