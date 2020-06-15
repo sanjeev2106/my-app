@@ -13,15 +13,24 @@ const cockpit = (props) => {
 
      // To restrict when person component changes then setTimeout() will call at 1 sec. delay.
      // We can add as more condition also (like persons)
-     // if we want setTimeout() will call once when component rendered for first time, just pass an empty list: []
-     // In our case it call once when page loaded.
      useEffect(() => {
-      console.log('[cockpit.js] useeffect')
+      console.log('[cockpit.js] useEffect')
       // Http Request..
       setTimeout(()=>{
         alert('Saved data to cloud!');
       }, 1000);
-    },[props.persons]) 
+      return () =>{
+         console.log('[Cockpit.js] cleanup work in useEffect');
+      }
+    },[]); 
+
+    // can have multiple useEffect statements.
+    useEffect(() => {
+      console.log('[cockpit.js] 2nd useEffect')
+      return () =>{
+        console.log('[Cockpit.js] cleanup work in 2nd useEffect');
+     }
+    })
 
     const assignedClasses = [];
     let btnClass = '';

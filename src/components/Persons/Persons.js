@@ -22,9 +22,18 @@ class Persons extends Component{
         return {message: 'snapshot!'};       
     }
 
+    // componentWillUpdate(){
+        
+    // }
+
     componentDidUpdate(prevProps, prevState, snapshot){
         console.log('[Persons.js] componentDidUpdate');
         console.log(snapshot);
+    }
+
+    // we can do cleaning up job here
+    componentWillUnmount(){
+        console.log('[Persons.js] componentWillUnmount');
     }
 
     render(){
