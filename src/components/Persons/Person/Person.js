@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 //import classes from './Person.css';
 import Aux from '../../../hoc/Aux'
 
@@ -19,11 +19,12 @@ class Person extends Component {
         // )
 
         return (
-            <Aux>  
+            // React has build in Aux component that is Fragment so we don't need create this mannualy.
+            <Fragment>  
             <p key="i1">I'm {this.props.name} and my age is {this.props.age}!</p>
             <p key="i2">{this.props.children}</p>
             <input key="i3" type="text" onChange={this.props.changed} value={this.props.name}/>
-            </Aux>
+            </Fragment>
       
         );
     }   
