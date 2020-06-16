@@ -20,8 +20,8 @@ class Person extends Component {
 
         return (
             <Aux>  
-            <p key="i1">I'm {this.props.name} and my age is {this.props.age}!</p>,
-            <p key="i2">{this.props.children}</p>,
+            <p key="i1">I'm {this.props.name} and my age is {this.props.age}!</p>
+            <p key="i2">{this.props.children}</p>
             <input key="i3" type="text" onChange={this.props.changed} value={this.props.name}/>
             </Aux>
       
