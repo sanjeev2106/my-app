@@ -1,7 +1,13 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
+
+    const toggleBtnRef = useRef(null);
+    //we can't do this here because it calls befor the rendering of dom so this will give 
+    //an error. Best place is useEffect because this will calls when dom rendered.
+    //toggleBtnRef.current.click(); 
+
     // // for every change setTimeout() will call at 1 second delay.
     // useEffect(() => {
     //   console.log('[cockpit.js] useeffect')
@@ -16,9 +22,11 @@ const cockpit = (props) => {
      useEffect(() => {
       console.log('[cockpit.js] useEffect')
       // Http Request..
-      setTimeout(()=>{
-        alert('Saved data to cloud!');
-      }, 1000);
+      // setTimeout(()=>{
+      //   //alert('Saved data to cloud!');
+      //   toggleBtnRef.current.click();
+      // }, 1000);
+      toggleBtnRef.current.click();
       return () =>{
          console.log('[Cockpit.js] cleanup work in useEffect');
       }
@@ -52,7 +60,7 @@ const cockpit = (props) => {
         <div className={classes.Cockpit}>
             <h1>{props.title}</h1>
             <p className={assignedClasses.join(' ')}>Wow Its working!</p>      
-            <button className={btnClass} onClick={props.clicked}>Click to Toggle</button>        
+            <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>Click to Toggle</button>        
         </div>
     );
 };
