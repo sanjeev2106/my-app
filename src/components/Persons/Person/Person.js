@@ -6,6 +6,16 @@ import PropTypes from 'prop-types';
 
 
 class Person extends Component {
+
+    constructor(props){
+        super(props);
+        this.inputElementRef = React.createRef(); 
+    }
+    componentDidMount(){
+        // this.inputElement.focus();
+        this.inputElementRef.current.focus();
+    }
+
     render(){
         console.log('[Person.js] rendering...');
         // As know, we can return only a single element means we have a root element and others are inside that.
@@ -24,7 +34,13 @@ class Person extends Component {
             <Aux>  
             <p key="i1">I'm {this.props.name} and my age is {this.props.age}!</p>
             <p key="i2">{this.props.children}</p>
-            <input key="i3" type="text" onChange={this.props.changed} value={this.props.name}/>
+            <input 
+                key="i3" 
+                //ref={(inputEl) => {this.inputElement = inputEl}} // Get last input focused or
+                ref={this.inputElementRef}
+                type="text" 
+                onChange={this.props.changed} 
+                value={this.props.name}/>
             </Aux>
       
         );
@@ -34,7 +50,7 @@ class Person extends Component {
 Person.propTypes = {
     click: PropTypes.func,
     name: PropTypes.string,
-    age: PropTypes.number,
+    age: PropTypes.number, 
     changed: PropTypes.func
 }
 
