@@ -61,6 +61,7 @@ const cockpit = (props) => {
             <h1>{props.title}</h1>
             <p className={assignedClasses.join(' ')}>Wow Its working!</p>      
             <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>Click to Toggle</button>        
+            <button onClick={props.login}>Login</button>
         </div>
     );
 };

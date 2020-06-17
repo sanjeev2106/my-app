@@ -55,7 +55,8 @@ class Persons extends PureComponent{
                 name={person.name}
                 age={person.age}
                 key={person.id}// each element should have unique id, after adding this Warning: Each child in a list should have a unique "key" prop will got removed.
-                changed={(event)=> this.props.changed(event, person.id)} />
+                changed={(event)=> this.props.changed(event, person.id)} 
+                isAuth={this.props.isAuthenticated}/>
             );
         });
         };

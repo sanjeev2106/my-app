@@ -32,6 +32,7 @@ class Person extends Component {
 
         return (
             <Aux>  
+                {this.props.isAuth ? <p>Authenticated!</p> : <p>Please Login!</p>}
             <p key="i1">I'm {this.props.name} and my age is {this.props.age}!</p>
             <p key="i2">{this.props.children}</p>
             <input 
