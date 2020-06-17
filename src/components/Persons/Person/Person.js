@@ -12,9 +12,13 @@ class Person extends Component {
         super(props);
         this.inputElementRef = React.createRef(); 
     }
+
+    static contextType = AuthContext;
+
     componentDidMount(){
         // this.inputElement.focus();
         this.inputElementRef.current.focus();
+        console.log(this.context.authenticated);
     }
 
     render(){
@@ -33,19 +37,17 @@ class Person extends Component {
 
         return (
             <Aux>  
-                <AuthContext.Consumer>
-                    {(context) => context.authenticated ? <p>Authenticated!</p> : <p>Please Login!</p>}
-                </AuthContext.Consumer>
+                {this.context.authenticated ? <p>Authenticated!</p> : <p>Please Login!</p>}                
                 {/* {this.props.isAuth ? <p>Authenticated!</p> : <p>Please Login!</p>} */}
-            <p key="i1">I'm {this.props.name} and my age is {this.props.age}!</p>
-            <p key="i2">{this.props.children}</p>
-            <input 
-                key="i3" 
-                //ref={(inputEl) => {this.inputElement = inputEl}} // Get last input focused or
-                ref={this.inputElementRef}
-                type="text" 
-                onChange={this.props.changed} 
-                value={this.props.name}/>
+                <p key="i1">I'm {this.props.name} and my age is {this.props.age}!</p>
+                <p key="i2">{this.props.children}</p>
+                <input 
+                    key="i3" 
+                    //ref={(inputEl) => {this.inputElement = inputEl}} // Get last input focused or
+                    ref={this.inputElementRef}
+                    type="text" 
+                    onChange={this.props.changed} 
+                    value={this.props.name}/>
             </Aux>
       
         );

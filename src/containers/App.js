@@ -120,16 +120,16 @@ class App extends Component{
             authenticated: this.state.authenticated,
             login: this.loginHandler
           }}>
-          { this.state.showCockpit ? 
-          <Cockpit 
-            title={this.props.appTitle}
-            showPerson={this.state.showPerson}
-            personsLength={this.state.persons.length}
-            clicked={this.togglePersonHandler}
-            //login={this.loginHandler}
-            />
-          : null }
-         {persons}  
+            { this.state.showCockpit ? 
+            <Cockpit 
+              title={this.props.appTitle}
+              showPerson={this.state.showPerson}
+              personsLength={this.state.persons.length}
+              clicked={this.togglePersonHandler}
+              //login={this.loginHandler}
+              />
+            : null }
+          {persons}  
          </AuthContext.Provider>
         </Aux>     
     )
